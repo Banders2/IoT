@@ -1,21 +1,17 @@
 sudo: required
 services:
-  - docker
+- docker
 env:
   global:
-    - REGISTRY_USER=myrobot
-    # REGISTRY_PASS=...
-    - secret: "<something long>"
-
+  - REGISTRY_USER=automationuser
+  - secure: d9AVE81Yw36dS7NVpUxrpn1/FbEL1acHS/5zb9bmTttuF5D8HyO5dvT85VZJnoP+hSm+GBTpaP8eDSoZkUJlhk7NJDC3ZEknma5ftJ+ljdGjpMf6JOTm7B5ga3OLImucIVISXhN0jZFaQOCPdmXSPjvR6iXIA/FdX6HWCaWJw7VV9eAicNWuS6o0g8k7mmMahqo0VnB5wNNHCYtOBAgd7u6A6/Dnqh7JynVIK76Y3wXvL0BxZsnoWYT4hqH3Adgklh3vY2SIA6xXauFCFAG04jxDtA/Iz2MHPFIs40vuMu5QjB/+5Z7mq7qF5qzFc2Rd2QH+bYaKCGClke2cGGoYHAd3gZC/vA2q8XjTuo8xAf0ixNlorubJYSaixgJZy05AylnB0Wcltg75HgN90ebE1m0d5Y2GclKLmw9RbTmAyRP6mTApMskMbIZX6bUaxssnYS0S5TFghQWYZ+MHuKhchr9dcHwlYwkxr98blMEriAidrEA3zq7lat9CnsXzBNimkvxQFeV3dnp9WHl2Sp+YYOLw3xO3thMxGKp+ZKd3Uba5Ygken6D3tFRUEBapr786QVKn/MKbBRJSaZs6csh5anjDswwVQTvuIv1sfCCDiBTDTmsM2rWjdYXLXcfVcLVfuYSN57Jxfq0sMEwJVlT95x8P886FrmMOFewi9iJAdT4=
 script:
-  - docker build --tag raniot/gettingstarted ./gettingstarted
-  - docker run raniot/gettingstarted
-
+- docker build --tag raniot/gettingstarted ./gettingstarted
+- docker run raniot/gettingstarted
 after_script:
-  - docker images
-
+- docker images
 before_deploy:
-  - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
+- docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
 deploy:
   provider: script
   script: docker push raniot/gettingstarted
