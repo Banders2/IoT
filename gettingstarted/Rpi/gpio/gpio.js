@@ -15,6 +15,7 @@ module.exports.ledOff = () => {
 module.exports.ledToggle = () => {
     var led = new Gpio(4, 'out');
     var ledstate = (led.readSync() + 1) % 2;
+    console.log('read from led: ' + led.readSync());
     console.log('Led is now: ' + ledstate);
     led.writeSync(ledstate);
 }
