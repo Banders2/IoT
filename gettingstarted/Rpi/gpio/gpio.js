@@ -14,7 +14,7 @@ module.exports.ledOff = () => {
 
 module.exports.ledToggle = () => {
     var led = new Gpio(4, 'out');
-    led.writeSync(led.readSync() ^ 1);
+    led.writeSync((led.readSync() + 1) % 2);
 }
 
 module.exports.humidityRead = () => {
@@ -31,11 +31,11 @@ module.exports.temperatureRead = () => {
 
 module.exports.pirRead = () => {
     var pir = new Gpio(17, 'in', 'both');
-    var pirval = '';
+    var pirval = 'No value';
     pir.watch((err, val) => {
         if(err) throw err;
         console.log('Pir: ' + val);
-        pirval = '' + val;
+        pirval = val.toString() + ' current value';
     })
     return pirval;
 }

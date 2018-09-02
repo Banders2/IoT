@@ -7,5 +7,5 @@ module.exports.index = (req, res) => {
 
 module.exports.toggleLED = (req, res) => {
     gpio.ledToggle();
-    res.redirect('/');
+    res.redirect('/actuators');
 }
