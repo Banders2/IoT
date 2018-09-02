@@ -12,6 +12,11 @@ module.exports.ledOff = () => {
     led.writeSync(0);
 }
 
+module.exports.ledToggle = () => {
+    var led = new Gpio(4, 'out');
+    led.writeSync(led.readSync() ^ 1);
+}
+
 module.exports.humidityRead = () => {
     var readout = dht.read();
     return readout.humidity.toFixed(2) + '%';

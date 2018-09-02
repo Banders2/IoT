@@ -12,6 +12,7 @@
     "http-errors": "~1.6.2",
     "morgan": "~1.9.0",
     "pug": "2.0.0-beta11",
-    "onoff": "~3.2.1"
+    "onoff": "~3.2.1",
+    "rpi-dht-sensor": "~0.1.1"
   }
 }
