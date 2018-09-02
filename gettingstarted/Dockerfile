@@ -6,6 +6,6 @@ RUN apk add --update \
     build-base \
   && pip install virtualenv \
   && rm -rf /var/cache/apk/*
-ADD ./IoT/gettingstarted .
+ADD . .
 RUN npm install
 CMD ["npm", "start"]
