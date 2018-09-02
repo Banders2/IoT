@@ -12,12 +12,19 @@ module.exports.ledOff = () => {
     led.writeSync(0);
 }
 
+var ledstate = false;
+
 module.exports.ledToggle = () => {
     var led = new Gpio(4, 'out');
-    var ledstate = (led.readSync() + 1) % 2;
-    console.log('read from led: ' + led.readSync());
-    console.log('Led is now: ' + ledstate);
-    led.writeSync(ledstate);
+
+    if(ledstate == false){
+        ledstate = true;
+        led.writeSync(1);
+    }
+    else{
+        ledstate = false;
+        led.writeSync(0);
+    }
 }
 
 module.exports.humidityRead = () => {
