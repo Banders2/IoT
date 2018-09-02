@@ -1,4 +1,7 @@
+var gpio = require('../gpio/gpio');
+
 
 module.exports.index = (req, res) => {
-    res.render('index', { title: 'Sensors' });
+    gpio.ledOff();
+    res.render('page2', { title: 'Sensors' });
 };
