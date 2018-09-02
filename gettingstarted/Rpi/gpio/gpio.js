@@ -39,7 +39,7 @@ module.exports.temperatureRead = () => {
     return readout.temperature.toFixed(2) + 'C';
 }
 
-var pirval = 'No value';
+var pirval = 'Waiting for update';
 
 module.exports.pirRead = () => {
     var pir = new Gpio(17, 'in', 'both');
@@ -48,7 +48,7 @@ module.exports.pirRead = () => {
         if(err) throw err;
         
         console.log('Pir: ' + val);
-        pirval = val.toString() + ' current value';
+        pirval = val.toString();
     })
 
     return pirval;
