@@ -4,8 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-const indexRouter = require('./Rpi/routes/index');
-const usersRouter = require('./Rpi/routes/users');
+const homepageRouter = require('./Rpi/routes/homepage');
+const sensorsRouter = require('./Rpi/routes/sensors');
+const actuatorRouter = require('./Rpi/routes/actuators');
 
 var app = express();
 
@@ -19,8 +20,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/', homepageRouter);
+app.use('/sensors', sensorsRouter);
+app.use('/actuators', actuatorRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
