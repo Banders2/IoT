@@ -3,6 +3,6 @@ var router = express.Router();
 
 var controller = require('../controllers/actuatorsController');
 router.get('/', controller.index);
-router.post('/toggleLED', controller.toggleLED);
+router.post('/actuators/toggleLED', controller.toggleLED);
 
 module.exports = router;
