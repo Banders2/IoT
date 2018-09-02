@@ -31,9 +31,11 @@ module.exports.temperatureRead = () => {
 
 module.exports.pirRead = () => {
     var pir = new Gpio(17, 'in', 'both');
+    var pirval = '';
     pir.watch((err, val) => {
         if(err) throw err;
         console.log('Pir: ' + val);
-        return val;
+        pirval = '' + val;
     })
+    return pirval;
 }

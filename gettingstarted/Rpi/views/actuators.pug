@@ -3,5 +3,5 @@ block content
   h1= title
   p Welcome to #{title}
   
-  form(action="/toggleLED", method="post")
+  form(action="/actuators/toggleLED", method="get")
     button.btn.btn-primary(type='submit') Toggle LED
