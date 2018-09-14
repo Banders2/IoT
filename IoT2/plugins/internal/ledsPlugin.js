@@ -7,7 +7,14 @@ var localParams = {'simulate': false, 'frequency': 2000};
 
 exports.start = (params) => {
   localParams = params;
-  observe(model);
+  resources.observe(changes => {
+    changes.forEach(change => {
+      if (change.type === 'update' &&
+          model === change.path.slice(0, -1).reduce((obj, i) => obj[i], resources)) {
+        switchOnOff(change.value);
+      }
+    });
+  });
 
   if (localParams.simulate) {
     simulate();
@@ -25,12 +32,6 @@ exports.stop = function () {
   console.info('%s plugin stopped!', pluginName);
 };
 
-function observe(what) {
-  new Proxy(what, (changes) => {
-    console.info('Change detected by plugin for %s...', pluginName);
-    switchOnOff(model.value);
-  });
-};
 
 function switchOnOff(value) {
   if (!localParams.simulate) {
