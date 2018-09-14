@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<p id="pir">Hello World!</p>
-<p id="temp">Hello World!</p>
-<p id="humi">Hello World!</p>
+<p id="pir">No Pir value yet!</p>
+<p id="temp">No temperature measurement yet!</p>
+<p id="humi">No humidity measurement yet!</p>
 <body><script>
     function subscribeToWs(url, msg) {
         var socket = new WebSocket(url);
 
         socket.onmessage = function (event) {
-            // console.log("This is an event" + event.data);
             eventString = event.data + "";
             console.log(eventString);
             if(eventString.includes("Pir"))
@@ -30,9 +29,5 @@
             }
         };
     }
-    //subscribeToWs('ws://localhost:8484/pi/sensors/temperature');
-    subscribeToWs('ws://localhost:8484/pi/sensors/pir');
-    //subscribeToWs('ws://raspberrypi.local:8484/pi/sensors/temperature');
-    //subscribeToWs('ws://raspberrypi.local:8484/pi/sensors/humidity');
-    //subscribeToWs('ws://wot-pi.local:8484/pi/sensors/pir');
+    subscribeToWs('ws://localhost:8484/pi');
 </script></body></html>
