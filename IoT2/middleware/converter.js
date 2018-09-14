@@ -9,6 +9,7 @@ module.exports = function () {
       switch (req.accepts(['json', 'html', 'application/x-msgpack'])) {
         case 'html':
           console.info('HTML representation selected!');
+          var test = req.url;
           var transform = {'tag': 'div', 'html': '${name} : ${value} <br> Description: ${description}'};
           res.send(json2html.transform(req.result, transform));
           return;
